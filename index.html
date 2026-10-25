@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2f7d4f" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16231b" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <title>KantinGo FEB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#e9f1ed;--sf:#fff;--tx:#1b2a21;--mu:#6b7f73;--pr:#2f7d4f;--pr2:#256b43;--ls:#d8ecdc;--ls2:#eaf5ec;--bd:#dce8e1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -110,6 +115,65 @@ h3{font-size:1.05rem;margin:0 0 12px}.hr h3~h3{margin-top:22px}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--pr2);color:#fff;padding:9px 18px;border-radius:20px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .2s}#toast.on{opacity:1}
 @media(max-width:900px){.home,.dt,.cr,.st{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,1fr)}.lp{grid-template-columns:1fr}.sb{display:flex;overflow-x:auto}.sb button{white-space:nowrap}.sb .ch{display:none}.top{gap:10px;padding:10px 12px}.logo span{display:none}.tabs button{padding:8px 6px}.tiles{grid-template-columns:repeat(2,1fr)}.hd .ph{width:90px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== Optimasi ponsel & desktop ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,select,input,.mc{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+img{max-width:100%}
+.tabs{overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{white-space:nowrap}
+.row{flex-wrap:wrap}
+.ic{gap:10px}
+
+/* Desktop: efek hover hanya untuk perangkat dengan mouse */
+@media(hover:hover){
+.lc,.mc{transition:transform .15s,box-shadow .15s}
+.lc:hover,.mc:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(30,70,45,.12)}
+.tabs button:hover{color:var(--pr2)}.pills button:hover{background:var(--ls2)}
+.sb button:not(.on):hover{background:var(--ls2)}
+}
+@media(min-width:1280px){.wrap{max-width:1280px;padding:20px}}
+@media(min-width:901px) and (max-width:1100px){.st{grid-template-columns:1fr 1.6fr}.st>div:last-child{grid-column:1/-1}.g4{grid-template-columns:repeat(3,1fr)}}
+
+/* Layar sentuh: target tap minimal ±40px */
+@media(pointer:coarse){
+.ic{gap:4px}
+.ic button{min-width:40px;min-height:40px;display:grid;place-items:center}
+.ic b{top:2px;right:0}
+.q button{width:42px;height:40px}.q span{line-height:40px}
+.it .q button{width:34px;height:34px}.it .q span{line-height:34px}
+.ob,.gb,.mode,.bar select,.ic select{min-height:40px}
+.pills button{padding:9px 16px}.tb button{padding:12px 2px}
+.back,.lnk{padding:10px 0}.del{padding:10px}.sb button{min-height:44px}.po{padding:12px}
+}
+
+/* Ponsel: bottom navigation + header menempel */
+@media(max-width:700px){
+body{padding-bottom:64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:40}
+.wrap{padding:0}
+.panel{border-radius:0;border-width:0;box-shadow:none;overflow:visible;min-height:100vh}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:35}
+.top .ic{margin-left:auto}
+.ic select{max-width:130px;font-size:.72rem}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:35;gap:0;background:var(--sf);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -4px 14px rgba(0,0,0,.08)}
+.tabs button{flex:1;margin:0;min-height:56px;padding:10px 4px;font-size:.74rem;border-bottom:0;border-top:3px solid transparent}
+.tabs button.on{border-top-color:var(--pr)}
+.home{min-height:0}.hl{padding:22px 16px}.hl h1{font-size:1.45rem}
+.hr,.lp,.dt,.cr,.st,.sh{padding:14px}
+.sr input,.bar select,.ic select{font-size:16px}.sr input{padding:12px}.sr button{width:48px}
+.g4{gap:10px}.lc .pic{height:84px}
+.hd{flex-wrap:wrap}.hd .ph{width:72px;height:72px}.hd h2{font-size:1.1rem}
+.dt .box[style*="margin-top:30px"]{margin-top:0!important}
+.big .plate{width:68px;height:68px}
+.row .gb{flex:1}
+.prog div{font-size:.64rem}
+.bar{gap:8px}.bar select{flex:1;min-width:0}
+.sg{grid-template-columns:1fr}
+.gc{padding:18px 12px}
+#toast{bottom:calc(76px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 32px);text-align:center}
+}
+@media(max-width:360px){.g4{grid-template-columns:1fr}.tabs button{font-size:.68rem}}
 </style></head><body>
 <div class="wrap"><div class="panel">
 <div class="top"><button class="logo" onclick="go('home')" aria-label="Beranda"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M8 4v6a2 2 0 004 0V4M10 4v16M17 4c-2 2-2 6 0 8v8"/></svg></i><span>KantinGo</span></button>
