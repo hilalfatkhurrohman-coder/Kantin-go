@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KantinGo FEB</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9f1ed;--sf:#fff;--tx:#1b2a21;--mu:#6b7f73;--pr:#2f7d4f;--pr2:#256b43;--ls:#d8ecdc;--ls2:#eaf5ec;--bd:#dce8e1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1712;--sf:#16231b;--tx:#e5f1ea;--mu:#9bb3a5;--pr:#4cb27b;--pr2:#3f9b69;--ls:#1e3a2a;--ls2:#1a2e22;--bd:#2a4636}}
+:root[data-theme="dark"]{--bg:#0e1712;--sf:#16231b;--tx:#e5f1ea;--mu:#9bb3a5;--pr:#4cb27b;--pr2:#3f9b69;--ls:#1e3a2a;--ls2:#1a2e22;--bd:#2a4636}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 Inter,"Segoe UI",system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}svg{display:block}
+:focus-visible{outline:3px solid #e9a23b;outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:14px}
+.panel{background:var(--sf);border:1px solid var(--bd);border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(30,70,45,.07)}
+.top{display:flex;align-items:center;gap:26px;padding:12px 22px;border-bottom:1px solid var(--bd);background:var(--sf)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.25rem;background:none;border:0;padding:0}
+.logo i{width:32px;height:32px;border-radius:50%;background:var(--pr2);display:grid;place-items:center}
+.logo svg{width:18px;height:18px}
+.tabs{display:flex;gap:6px;flex:1}
+.tabs button{background:none;border:0;padding:9px 12px;font-size:.82rem;color:var(--mu);border-bottom:2px solid transparent;margin-bottom:-13px}
+.tabs button.on{color:var(--pr2);border-color:var(--pr);font-weight:600}
+.ic{display:flex;align-items:center;gap:14px;color:var(--mu)}
+.ic button{background:none;border:0;position:relative;padding:2px;color:var(--mu)}
+.ic svg{width:19px;height:19px}.ic b{position:absolute;top:-6px;right:-8px;background:var(--pr);color:#fff;font-size:.65rem;border-radius:9px;padding:0 5px}
+.av{width:28px;height:28px;border-radius:50%;background:#c58f62;color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:700}
+.home{display:grid;grid-template-columns:36% 1fr;min-height:560px}
+.hl{background:var(--ls);padding:34px 26px 24px;display:flex;flex-direction:column;gap:14px}
+.hl h1{font-size:1.95rem;line-height:1.2;font-weight:500;margin:0}
+.hl p{margin:0;font-size:.85rem}
+.sr{display:flex;background:var(--sf);border-radius:9px;border:1px solid var(--bd);overflow:hidden}
+.sr input{flex:1;border:0;padding:10px 12px;font:inherit;font-size:.85rem;background:none;color:var(--tx);min-width:0}
+.sr button{width:40px;border:0;background:var(--pr2);color:#fff}
+.sr svg{width:16px;height:16px;margin:auto}
+.tiles{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:var(--ls2);border-radius:12px;padding:12px 8px}
+.tiles div{text-align:center;font-size:.68rem;line-height:1.25;display:grid;gap:6px;justify-items:center}
+.tiles svg,.sb svg,.rows svg{width:24px;height:24px;stroke:var(--pr2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hr{padding:22px 20px}
+h3{font-size:1.05rem;margin:0 0 12px}.hr h3~h3{margin-top:22px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lc,.mc{border:1px solid var(--bd);border-radius:10px;padding:7px;background:var(--sf);display:flex;flex-direction:column;gap:6px;text-align:left;width:100%}
+.lc .pic{background:var(--ls);border-radius:8px;height:92px;padding:6px}.lc .pic svg{width:100%;height:100%}
+.lc b,.mc b{font-size:.88rem}.lc>b{text-align:center}
+.ob{border:1px solid var(--pr);background:var(--sf);color:var(--pr2);border-radius:6px;padding:4px;font-size:.8rem;font-weight:600;width:100%}
+.ob:hover{background:var(--ls)}
+.gb{border:0;background:var(--pr2);color:#fff;border-radius:6px;padding:7px;font-size:.82rem;font-weight:600;width:100%}.gb:hover{background:var(--pr)}.gb:disabled{opacity:.5}
+.mc{align-items:center;text-align:center;cursor:pointer}
+.mc.sel{border-color:var(--pr);box-shadow:0 0 0 2px var(--ls)}
+.plate img,.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plate{position:relative;overflow:hidden;width:52px;height:52px;border-radius:50%;background:var(--ls);display:grid;place-items:center;font-size:1.7rem;border:3px solid var(--sf);box-shadow:0 0 0 1px var(--bd)}
+.mc small{color:var(--mu);font-size:.78rem}
+.lp{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:22px}
+.sb{display:grid;gap:7px;align-content:start}
+.sb button{display:flex;align-items:center;gap:10px;border:0;background:none;padding:10px 12px;border-radius:8px;font-size:.85rem;text-align:left}
+.sb button.on{background:var(--pr2);color:#fff;font-weight:600}
+.sb button:not(.on){border:1px solid var(--bd)}.sb button svg{width:18px;height:18px;stroke:currentColor}
+.sb span{flex:1}.lp h2{font-size:1.25rem;margin:0}.lp .sub{color:var(--mu);font-size:.8rem;margin:2px 0 12px}
+.lp .sr{margin-bottom:14px}.lp .lc .pic{height:110px}
+.dt{padding:18px 22px;display:grid;grid-template-columns:1.65fr 1fr;gap:20px}
+.back{background:none;border:0;color:var(--pr2);font-size:.8rem;padding:0;margin-bottom:10px}
+.hd{display:flex;gap:14px;align-items:center;border:1px solid var(--bd);border-radius:12px;padding:10px}
+.hd .ph{position:relative;overflow:hidden;width:150px;height:84px;border-radius:9px;background:linear-gradient(135deg,#f3d9b0,#e6a96b);display:grid;place-items:center;font-size:3rem;flex:none}
+.hd h2{margin:0;font-size:1.3rem}.hd p{margin:0;font-size:.78rem;color:var(--mu)}
+.bd{background:var(--pr2);color:#fff;border-radius:5px;font-size:.7rem;padding:2px 8px;font-weight:600}
+.tb{display:flex;gap:18px;border-bottom:1px solid var(--bd);margin:12px 0}
+.tb button{background:none;border:0;border-bottom:2px solid transparent;padding:6px 2px;font-size:.85rem;color:var(--mu)}
+.tb button.on{color:var(--pr2);border-color:var(--pr);font-weight:600}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.pills button{border:0;background:var(--ls);border-radius:18px;padding:5px 16px;font-size:.78rem}
+.pills button.on{background:var(--pr2);color:#fff;font-weight:600}
+.box{border:1px solid var(--bd);border-radius:12px;padding:16px;background:var(--sf)}
+.big{display:flex;gap:14px;align-items:center}.big .plate{width:84px;height:84px;font-size:2.8rem}
+.big h2{margin:0;font-size:1.15rem}.pr{color:var(--pr2);font-weight:700;font-size:1.05rem}
+.desc{color:var(--mu);font-size:.8rem;margin:12px 0}
+.q{display:flex;justify-content:center;align-items:center;gap:0;margin:10px auto;width:fit-content;border:1px solid var(--bd);border-radius:8px}
+.q button{width:36px;height:30px;border:0;background:none;font-size:1.1rem}.q span{width:46px;text-align:center;border-inline:1px solid var(--bd);line-height:30px}
+.rows{display:grid;gap:12px;font-size:.8rem;margin-top:14px}
+.rows div{display:flex;gap:10px;align-items:center}.rows svg{width:18px;height:18px;flex:none}
+.cr{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;padding:20px 22px}
+.it{display:flex;align-items:center;gap:12px;border:1px solid var(--bd);border-radius:10px;padding:8px 10px;margin-bottom:8px}
+.it .t{width:48px;height:42px;background:var(--ls);border-radius:7px;padding:3px;flex:none}.it .t svg{width:100%;height:100%}
+.it .n{flex:1;font-size:.82rem;line-height:1.3}.it .n small{color:var(--mu);display:block}
+.it .q{margin:0}.it .q button{width:26px;height:26px}.it .q span{width:32px;line-height:26px;font-size:.85rem}
+.del{border:0;background:none;color:var(--mu);font-size:1rem}
+.lnk{background:none;border:0;color:var(--pr2);font-size:.82rem;padding:4px 0;font-weight:500}
+.po{display:flex;gap:10px;align-items:center;border:1px solid var(--bd);border-radius:9px;padding:9px 12px;margin-top:8px;font-size:.82rem;cursor:pointer;background:var(--sf);width:100%;text-align:left}
+.po small{color:var(--mu);display:block;font-size:.72rem}.po span{flex:1}
+.ck{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--bd);display:grid;place-items:center;font-size:.7rem;color:#fff}.po.on .ck{background:var(--pr2);border-color:var(--pr2)}
+.po.on{border-color:var(--pr)}
+.ln{display:flex;justify-content:space-between;font-size:.8rem;padding:4px 0;gap:8px}.ln b{font-weight:600}
+.tot{border-top:1px solid var(--bd);margin:10px 0 14px;padding-top:12px;font-weight:700;font-size:.95rem}
+.nt{display:flex;gap:10px;font-size:.72rem;color:var(--mu);margin-top:14px;background:var(--ls2);border-radius:8px;padding:10px}
+.st{display:grid;grid-template-columns:.8fr 1.6fr 1fr;gap:16px;padding:20px 22px}
+.gc{background:var(--ls);border-radius:12px;padding:24px 16px;text-align:center;display:grid;gap:4px;align-content:start;justify-items:center}
+.gc .ok{width:50px;height:50px;border-radius:50%;background:var(--pr2);color:#fff;display:grid;place-items:center;font-size:1.5rem;margin-bottom:6px}
+.gc h2{margin:0 0 14px;font-size:1.1rem}.gc small{color:var(--mu)}.gc strong{font-size:1.3rem;margin-bottom:10px}
+.prog{display:flex;margin:16px 0 20px;position:relative}
+.prog:before{content:"";position:absolute;left:12%;right:12%;top:8px;height:3px;background:var(--bd)}
+.prog div{flex:1;text-align:center;font-size:.7rem;color:var(--mu);position:relative}
+.prog i{display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:var(--bd);margin:0 auto 6px;color:#fff;font-size:.6rem;font-style:normal}
+.prog .d{color:var(--tx)}.prog .d i{background:var(--pr2)}
+.dot{width:10px;height:10px;border-radius:50%;background:#b8733b;flex:none;margin-right:8px;display:inline-block}
+.emp{text-align:center;padding:60px 20px;color:var(--mu)}.emp p{margin:0 0 14px}.emp .gb{width:auto;padding:9px 20px}
+.row{display:flex;align-items:center;gap:10px}.sp{flex:1}
+.mode{border:1px solid var(--pr);background:var(--sf);color:var(--pr2);border-radius:16px;padding:4px 12px;font-size:.75rem;font-weight:600;white-space:nowrap}.mode.on{background:var(--pr2);color:#fff}
+.sh{padding:20px 22px}.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.bar select{border:1px solid var(--bd);border-radius:8px;padding:6px 10px;background:var(--sf);color:var(--tx);font:inherit;font-size:.85rem}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.tag{font-size:.7rem;font-weight:600;border-radius:5px;padding:2px 8px;background:var(--ls);color:var(--pr2);white-space:nowrap}.tag.red{background:#f6dcd6;color:#8c2f1c}.tag.amb{background:#fbeccd;color:#7a5410}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--pr2);color:#fff;padding:9px 18px;border-radius:20px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .2s}#toast.on{opacity:1}
+@media(max-width:900px){.home,.dt,.cr,.st{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,1fr)}.lp{grid-template-columns:1fr}.sb{display:flex;overflow-x:auto}.sb button{white-space:nowrap}.sb .ch{display:none}.top{gap:10px;padding:10px 12px}.logo span{display:none}.tabs button{padding:8px 6px}.tiles{grid-template-columns:repeat(2,1fr)}.hd .ph{width:90px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<div class="wrap"><div class="panel">
+<div class="top"><button class="logo" onclick="go('home')" aria-label="Beranda"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M8 4v6a2 2 0 004 0V4M10 4v16M17 4c-2 2-2 6 0 8v8"/></svg></i><span>KantinGo</span></button>
+<nav class="tabs" id="tabs"></nav>
+<div class="ic"><button aria-label="Cari" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><button aria-label="Keranjang" onclick="go('cart')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h3l2 11h10l2-8H7"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg><b id="cc">0</b></button><select class="mode" id="md" onchange="setMode(this.value)" aria-label="Pilih mode"><option value="b">Mode Pembeli</option><option value="p">Mode Penjual</option><option value="d">Mode Driver</option></select><span class="av">A</span></div></div>
+<div id="app"></div></div></div><div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),rp=n=>"Rp"+n.toLocaleString("id-ID");
+const stall=(()=>{let s="";for(let i=0;i<8;i++)s+=`<rect x="${8+i*8}" y="13" width="8" height="13" fill="${i%2?"#fff":"#2f7d4f"}"/>`;return `<svg viewBox="0 0 80 64"><rect x="10" y="26" width="60" height="34" rx="2" fill="#d9a05b"/><rect x="14" y="30" width="30" height="20" rx="2" fill="#f6e7c8"/><rect x="48" y="30" width="18" height="26" rx="2" fill="#f6e7c8" stroke="#a46a2d"/><path d="M52 36h10M52 42h10M52 48h10" stroke="#a46a2d" stroke-width="2"/><ellipse cx="29" cy="42" rx="8" ry="4" fill="#fff" stroke="#9a9a9a"/>${s}<rect x="6" y="9" width="68" height="5" rx="2" fill="#256b43"/></svg>`})();
+const I={store:'<path d="M4 9l1-5h14l1 5M5 9v11h14V9M4 9a2.5 2.5 0 005 0 2.5 2.5 0 006 0 2.5 2.5 0 005 0"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',wallet:'<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M16 15h2"/>',pin:'<path d="M12 21s7-6 7-11a7 7 0 00-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/>'};
+const ico=n=>`<svg viewBox="0 0 24 24">${I[n]}</svg>`;
+const M={1:[["Nasi Ayam Geprek","🍛",12500,"Nasi","Ayam goreng tepung digeprek dengan sambal bawang pedas, disajikan dengan nasi hangat dan lalapan."],["Bebek Penyet","🍗",18000,"Makanan","Bebek goreng empuk dengan sambal penyet dan lalapan."],["Ayam Pecel","🥘",19000,"Ayam","Ayam goreng dengan sambal pecel dan sayuran."],["Ayam Bakar","🍖",15000,"Ayam","Ayam bakar bumbu kecap dengan nasi putih."],["Es Teh Manis","🧋",6500,"Es","Teh dingin manis segar."],["Es Jeruk","🍊",5200,"Es","Jeruk peras dingin."],["Es Milo","🥤",8000,"Es","Milo dingin dengan susu."],["Gorengan","🥠",2500,"Camilan","Tahu dan bakwan goreng, harga per buah."]],
+2:[["Bakso Urat","🍲",19000,"Makanan","Bakso urat besar dengan kuah kaldu sapi."],["Mie Ayam","🍜",13000,"Makanan","Mie ayam dengan topping ayam kecap."],["Pangsit Goreng","🥟",8000,"Camilan","Pangsit goreng renyah isi 5."],["Es Jeruk","🍊",5200,"Es","Jeruk peras dingin."]],
+3:[["Nasi Goreng","🍚",10000,"Nasi","Nasi goreng telur dengan kerupuk."],["Nasi Telur Balado","🍳",11000,"Nasi","Telur balado dengan nasi hangat."],["Tahu Isi","🍢",5000,"Camilan","Tahu isi sayur, 3 buah."],["Teh Hangat","🍵",3000,"Es","Teh tawar atau manis hangat."]],
+4:[["Es Teh Manis","🧋",5000,"Es","Teh dingin manis segar."],["Es Kopi Susu","☕",12000,"Es","Kopi susu gula aren."],["Jus Alpukat","🥑",13000,"Es","Jus alpukat dengan cokelat."],["Roti Bakar","🍞",9000,"Camilan","Roti bakar cokelat keju."]],
+5:[["Soto Ayam","🥣",14000,"Makanan","Soto ayam kuah kuning dengan telur dan koya."],["Nasi Rames","🍱",13000,"Nasi","Nasi dengan lauk pilihan dan sayur."],["Sop Ayam","🍲",14000,"Makanan","Sop ayam bening dengan wortel dan kentang."],["Es Cincau","🍧",5000,"Es","Cincau hijau dengan sirup gula merah."]],
+6:[["Gorengan Campur","🥠",5000,"Camilan","Bakwan dan tempe goreng, isi 3."],["Pisang Goreng","🍌",6000,"Camilan","Pisang goreng renyah, isi 3."],["Tahu Isi","🍢",5000,"Camilan","Tahu isi sayur, isi 3."],["Risoles","🥟",4000,"Camilan","Risoles isi ragout ayam."],["Es Teh Manis","🧋",4000,"Es","Teh dingin manis segar."]]};
+const T=["Makanan","Makanan","Makanan","Minuman","Makanan","Camilan"];
+const N=["Warung Ayam Geprek","Warung Baso & Mie Ayam","Warung Nasi Goreng","Warung Es & Kopi","Warung Soto Ayam","Warung Gorengan"],nm=l=>N[l-1]||"Lapak "+l;
+const mn=l=>M[l],it=c=>mn(c.l)[c.i];
+const pic=m=>`${m[1]}<img src="img/${m[0].toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}.jpg" alt="${m[0]}" loading="lazy" onerror="this.remove()">`;
+let S={v:"home",l:1,cat:"Semua",tab:"menu",sel:0,qty:1,f:"Lapak Pilihan",q:"",pay:"cod",mode:"b",sl:1,st:"pesanan",pf:"baru",dt:"siap"},cart=[],order=null,orders=[],tutup={},stock={};
+const sk=(l,i)=>l+"-"+i,gs=(l,i)=>sk(l,i) in stock?stock[sk(l,i)]:(stock[sk(l,i)]=(l==1&&i==1)?3:(l==1&&i==2)?0:20),isOpen=l=>!tutup[l];
+const toast=t=>{const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),1500)};
+const go=(v,l)=>{S.mode="b";S.v=v;if(l){S.l=l;S.cat="Semua";S.tab="menu";S.sel=0;S.qty=1}scrollTo(0,0);render()};
+const add=(l,i,n=1)=>{const x=cart.find(c=>c.l==l&&c.i==i);if(!isOpen(l))return toast("Lapak sedang tutup");if((x?x.q:0)+n>gs(l,i))return toast("Stok tidak cukup. Sisa "+gs(l,i));x?x.q+=n:cart.push({l,i,q:n});toast("Ditambahkan ke keranjang");render()};
+const chg=(k,d)=>{const c=cart[k];if(d>0&&c.q+d>gs(c.l,c.i))return toast("Stok tidak cukup");c.q+=d;if(c.q<1)cart.splice(k,1);render()};
+const total=()=>cart.reduce((s,c)=>s+it(c)[2]*c.q,0);
+const lcard=l=>`<div class="lc"><div class="pic">${stall}</div><b>${nm(l)}</b>${isOpen(l)?"":'<small style="text-align:center;color:#b3402a">Sedang tutup</small>'}<button class="ob" onclick="go('detail',${l})">Buka</button></div>`;
+const mcard=(l,i)=>{const m=mn(l)[i];return `<div class="mc"><div class="plate">${pic(m)}</div><b>${m[0]}</b><small>${rp(m[2])}</small><button class="ob" onclick="go('detail',${l})">Pesan</button></div>`};
+const V={
+home(){const r=S.q?[1,2,3,4].flatMap(l=>mn(l).map((m,i)=>[l,i,m])).filter(x=>x[2][0].toLowerCase().includes(S.q.toLowerCase())):null;
+return `<div class="home"><div class="hl"><h1>Selamat datang di KantinGo Fakultas Ilmu Ekonomi dan Bisnis (FEB)</h1><p>Pesan makanan dari berbagai lapak kantin tanpa antre. Lihat menu, pilih, dan ambil.</p>
+<form class="sr" onsubmit="event.preventDefault();S.q=this.q.value.trim();render()"><input name="q" value="${S.q}" placeholder="Cari makanan dan kantin..." aria-label="Cari"><button aria-label="Cari"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></form>
+<div class="tiles"><div>${ico("store")}Pilih Lapak</div><div>${ico("clock")}Pesan Tanpa Antre</div><div>${ico("wallet")}Bayar di Lapak</div><div>${ico("pin")}Ambil di Lapak Sesuai Pesanan</div></div></div>
+<div class="hr">${r?`<h3>Hasil pencarian “${S.q}”</h3><div class="g4">${r.map(x=>mcard(x[0],x[1])).join("")||'<p style="color:var(--mu)">Menu tidak ditemukan. Coba kata kunci lain.</p>'}</div>`:`<h3>Daftar Lapak</h3><div class="g4">${[1,2,3,4].map(lcard).join("")}</div><h3>Menu Favorit Mahasiswa</h3><div class="g4">${[[1,0],[2,0],[3,0],[4,0]].map(f=>mcard(...f)).join("")}</div>`}</div></div>`},
+lapak(){const F=["Lapak Pilihan","Makanan","Minuman","Camilan"],ic=["store","store","card","clock"];
+const ls=[1,2,3,4,5,6].filter(l=>S.f=="Lapak Pilihan"||T[l-1]==S.f);
+return `<div class="lp"><div class="sb">${F.map((f,i)=>`<button class="${S.f==f?'on':''}" onclick="S.f='${f}';render()">${ico(ic[i])}<span>${f}</span><span class="ch" style="flex:none">›</span></button>`).join("")}</div>
+<div><h2>Daftar Lapak</h2><p class="sub">Pilih lapak yang ingin kamu pesan.</p><form class="sr" onsubmit="event.preventDefault()"><input placeholder="Cari lapak lebih makanan..." aria-label="Cari lapak" oninput="const v=this.value.toLowerCase();document.querySelectorAll('.lc').forEach(e=>e.style.display=e.textContent.toLowerCase().includes(v)?'':'none')"><button aria-label="Cari"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></form>
+<div class="g4">${ls.map(lcard).join("")}</div></div></div>`},
+detail(){const ms=mn(S.l),cs=["Semua",...new Set(ms.map(m=>m[3]))],m=ms[S.sel]||ms[0];
+return `<div class="dt"><div><button class="back" onclick="go('lapak')">‹ Kembali ke Daftar Lapak</button>
+<div class="hd"><div class="ph">${pic(ms[0])}</div><div style="flex:1"><h2>${nm(S.l)}</h2><p>Lapak ${S.l} · Kantin FEB</p></div><span class="bd" ${isOpen(S.l)?"":'style="background:#b3402a"'}>${isOpen(S.l)?"Buka":"Tutup"}</span></div>
+<div class="tb"><button class="${S.tab=='menu'?'on':''}" onclick="S.tab='menu';render()">Menu (${ms.length})</button><button class="${S.tab=='info'?'on':''}" onclick="S.tab='info';render()">Info Lapak</button></div>
+${S.tab=='info'?`<div class="box"><div class="rows"><div>${ico("pin")}${nm(S.l)}, Kantin FEB</div><div>${ico("clock")}Buka setiap hari kuliah, 07.00–15.00</div><div>${ico("wallet")}Bayar di tempat, e-wallet, atau transfer</div></div></div>`:`
+<div class="pills">${cs.map(c=>`<button class="${S.cat==c?'on':''}" onclick="S.cat='${c}';render()">${c}</button>`).join("")}</div>
+<div class="g4" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr))">${ms.map((x,i)=>(S.cat=="Semua"||x[3]==S.cat)?`<div class="mc ${i==S.sel?'sel':''}" onclick="S.sel=${i};S.qty=1;render()"><div class="plate">${pic(x)}</div><b>${x[0]}</b><small>${rp(x[2])}${gs(S.l,i)>0&&gs(S.l,i)<=5?" · Sisa "+gs(S.l,i):""}</small>${gs(S.l,i)<=0||!isOpen(S.l)?'<button class="gb" disabled>Habis</button>':`<button class="gb" onclick="event.stopPropagation();add(${S.l},${i})">Tambah</button>`}</div>`:"").join("")}</div>`}</div>
+<div class="box" style="align-self:start;margin-top:30px"><div class="big"><div class="plate">${pic(m)}</div><div><h2>${m[0]}</h2><div class="pr">${rp(m[2])}</div></div></div><p class="desc">${m[4]}<br><b>${gs(S.l,S.sel)>0?"Stok: "+gs(S.l,S.sel):"Stok habis"}</b></p>
+<div class="q"><button onclick="S.qty=Math.max(1,S.qty-1);render()" aria-label="Kurangi">−</button><span>${S.qty}</span><button onclick="S.qty++;render()" aria-label="Tambah">+</button></div>
+<button class="gb" style="padding:10px" ${gs(S.l,S.sel)<=0||!isOpen(S.l)?"disabled":""} onclick="add(${S.l},${S.sel},${S.qty})">${!isOpen(S.l)?"Lapak tutup":gs(S.l,S.sel)<=0?"Stok habis":"Tambah ke Keranjang"}</button>
+<div class="rows" style="border-top:1px solid var(--bd);padding-top:14px"><div>${ico("store")}Tersedia di: ${nm(S.l)}</div><div>${ico("clock")}Estimasi masak: 10–15 menit</div><div>${ico("wallet")}Metode pembayaran: Bayar di tempat atau di depan</div></div></div></div>`},
+cart(){if(!cart.length)return `<div class="emp"><p>Keranjang masih kosong. Pilih menu dari lapak untuk mulai memesan.</p><button class="gb" onclick="go('lapak')">Lihat lapak</button></div>`;
+const g={};cart.forEach(c=>(g[c.l]=g[c.l]||[]).push(c));
+const P=[["cod","Bayar di Tempat (COD)","Bayar tunai saat mengambil pesanan"],["ew","E-Wallet","GoPay, OVO, atau DANA"],["tf","Transfer Bank","Konfirmasi setelah transfer"]];
+return `<div class="cr"><div><h3>Keranjang Pesanan</h3>${cart.map((c,k)=>{const m=it(c);return `<div class="it"><div class="t">${stall}</div><div class="n"><b>${nm(c.l)}</b><small>${m[0]}</small><span class="pr" style="font-size:.82rem">${rp(m[2])}</span></div><div class="q"><button onclick="chg(${k},-1)" aria-label="Kurangi">−</button><span>${c.q}</span><button onclick="chg(${k},1)" aria-label="Tambah">+</button></div><button class="del" onclick="chg(${k},-99)" aria-label="Hapus">🗑</button></div>`}).join("")}
+<button class="lnk" onclick="go('lapak')">+ Tambah Pesanan Lain</button><h3 style="margin-top:14px">Metode Pembayaran</h3>${P.map(p=>`<button class="po ${S.pay==p[0]?'on':''}" onclick="S.pay='${p[0]}';render()"><span><b>${p[1]}</b><small>${p[2]}</small></span><i class="ck">${S.pay==p[0]?'✓':''}</i></button>`).join("")}</div>
+<div class="box" style="align-self:start"><h3>Ringkasan Pesanan</h3>${Object.keys(g).map(l=>`<div style="margin-bottom:8px"><b style="font-size:.82rem">${nm(l)}</b>${g[l].map(c=>`<div class="ln"><span>${it(c)[0]} (${c.q})</span><span>${rp(it(c)[2]*c.q)}</span></div>`).join("")}</div>`).join("")}
+<div class="ln tot"><span>Total Harga</span><span>${rp(total())}</span></div><button class="gb" style="padding:11px" onclick="place()">Pesan Sekarang</button>
+<div class="nt"><span>ⓘ</span><span>Setelah memesan, kamu bisa memantau status pesanan di halaman Pesanan Saya.</span></div></div></div>`},
+status(){if(!order)return `<div class="emp"><p>Belum ada pesanan aktif. Pesananmu akan muncul di sini.</p><button class="gb" onclick="go('lapak')">Pesan sekarang</button></div>`;
+const ps=order.parts,al=ps.filter(p=>p.s>=0),s=al.length?Math.min(...al.map(p=>p.s)):-1,St=["Pesanan Masuk","Sedang Disiapkan","Siap Diambil","Selesai"],pl=["Menunggu lapak","Disiapkan","Siap diambil","Selesai"],tt=al.reduce((a,p)=>a+pt(p),0);
+return `<div class="st"><div class="gc"><div class="ok">${s<0?"✕":"✓"}</div><h2>Status Pesanan</h2><small>Nomor Pesanan</small><strong>#${order.id}</strong><small>${s<0?"Status":"Estimasi siap"}</small><strong>${s<0?"Ditolak":s>=2?"Sekarang":(15-s*5)+" menit"}</strong></div>
+<div class="box"><h3>Pesanan Berlangsung</h3>${s<0?"":`<div class="prog">${St.map((x,i)=>`<div class="${i<=s?"d":""}"><i>${i<=s?"✓":""}</i>${x}</div>`).join("")}</div>`}
+<div class="box" style="background:var(--ls2)"><b style="font-size:.85rem">Detail Pesanan</b>${ps.map(p=>p.it.map(x=>`<div class="ln" style="margin-top:6px;${p.s<0?"text-decoration:line-through;opacity:.6":""}"><span><i class="dot"></i>${nm(p.l)} · ${x[1]} (${x[2]})</span><span>${rp(x[3])}</span></div>`).join("")).join("")}<div class="ln tot"><span>Total</span><span>${rp(tt)}</span></div></div></div>
+<div><div class="box"><h3>Lokasi Pengambilan</h3>${ps.map(p=>`<div class="ln"><span>• ${nm(p.l)}</span><span style="color:${p.s<0?"#b3402a":"var(--mu)"}">${p.s<0?"Ditolak":p.d&&p.s==2?"Belum diambil driver":pl[p.s]}</span></div>`).join("")}</div><div class="nt" style="background:var(--ls);margin-top:12px"><span>${ico("pin")}</span><span>Ambil pesananmu di lapak setelah status Siap Diambil. Sebutkan nomor pesanan. Status berubah saat penjual memproses pesanan.</span></div></div></div>`},
+profil(){return `<div class="emp"><div class="gc" style="max-width:320px;margin:auto"><div class="ok" style="background:#c58f62">A</div><h2 style="margin:0">Mahasiswa FEB</h2><small>Login dan pengaturan akun akan tersedia saat terhubung ke server.</small></div></div>`}};
+const pt=p=>p.it.reduce((a,x)=>a+x[3],0),fp=(id,l)=>orders.find(o=>o.id==id).parts.find(p=>p.l==l);
+function place(){if(cart.some(c=>c.q>gs(c.l,c.i)||!isOpen(c.l)))return toast("Ada menu habis atau lapak tutup. Periksa keranjang.");
+const g=[...new Set(cart.map(c=>c.l))];order={id:"KG"+String(Math.floor(Math.random()*9000)+100).padStart(4,"0"),pay:S.pay,parts:g.map(l=>({l,s:0,it:cart.filter(c=>c.l==l).map(c=>[c.i,it(c)[0],c.q,it(c)[2]*c.q])}))};
+cart.forEach(c=>stock[sk(c.l,c.i)]=gs(c.l,c.i)-c.q);orders.unshift(order);cart=[];toast("Pesanan terkirim ke lapak");go("status")}
+const setMode=m=>{S.mode=m;scrollTo(0,0);render()};
+const adv=(id,l)=>{fp(id,l).s++;render()};
+const rej=(id,l)=>{const p=fp(id,l);if(p.s!=0)return;p.s=-1;p.it.forEach(x=>stock[sk(l,x[0])]=gs(l,x[0])+x[2]);toast("Pesanan ditolak, stok dikembalikan");render()};
+const sset=(l,i,d)=>{stock[sk(l,i)]=Math.max(0,gs(l,i)+d);render()};
+const pick=(id,l,ok)=>{const p=fp(id,l);if(ok){p.s=3;p.d=0;toast("Pesanan dikonfirmasi sudah diambil")}else{p.d=1;toast("Ditandai belum diambil")}render()};
+V.driver=function(){const all=orders.flatMap(o=>o.parts.map(p=>({o,p}))),fl={siap:x=>x.p.s==2,proses:x=>x.p.s==1,selesai:x=>x.p.s==3},list=all.filter(fl[S.dt]||fl.siap),lb={siap:"Pesanan siap diambil di lapak",proses:"Pesanan masih disiapkan penjual",selesai:"Pesanan yang sudah diambil"};
+return `<div class="sh"><div class="bar"><b style="font-size:1.1rem">Dasbor Driver</b><span class="sp"></span><span style="color:var(--mu);font-size:.85rem">${lb[S.dt]||lb.siap}</span></div>${list.length?`<div class="sg">${list.map(x=>{const o=x.o,p=x.p;return `<div class="box"><div class="row"><b>#${o.id}</b><span class="sp"></span><span class="tag ${p.s==3?"":p.d?"amb":""}">${p.s==3?"Sudah diambil":p.d?"Belum diambil":p.s==2?"Siap diambil":"Sedang disiapkan"}</span></div><div style="margin:6px 0;font-size:.85rem"><b>${nm(p.l)}</b> · Kantin FEB</div>${p.it.map(y=>`<div class="ln"><span>${y[2]}× ${y[1]}</span><span>${rp(y[3])}</span></div>`).join("")}<div class="ln tot" style="margin:0 0 10px"><span>Total</span><span>${rp(pt(p))}</span></div>${p.s==2?`<div class="row"><button class="gb" onclick="pick('${o.id}',${p.l},1)">Sudah diambil</button><button class="ob" style="width:auto;padding:7px 12px;white-space:nowrap" onclick="pick('${o.id}',${p.l},0)">Belum diambil</button></div>`:""}</div>`}).join("")}</div>`:`<div class="emp"><p>Belum ada pesanan di tab ini. Pesanan yang siap diambil akan muncul di sini.</p></div>`}</div>`};
+V.seller=function(){const l=S.sl,ms=mn(l),mine=orders.flatMap(o=>o.parts.filter(p=>p.l==l).map(p=>({o,p}))),
+bar=`<div class="bar"><b style="font-size:1.1rem">Dasbor Penjual</b><select aria-label="Pilih lapak" onchange="S.sl=+this.value;render()">${[1,2,3,4,5,6].map(x=>`<option value="${x}"${x==l?" selected":""}>${nm(x)}</option>`).join("")}</select><span class="sp"></span><button class="mode ${isOpen(l)?"on":""}" onclick="tutup[${l}]=isOpen(${l});render()">${isOpen(l)?"Toko buka (klik untuk tutup)":"Toko tutup (klik untuk buka)"}</button></div>`;
+if(S.st=="stok")return `<div class="sh">${bar}<p style="color:var(--mu);font-size:.85rem;margin:0 0 12px">Atur stok tiap menu. Menu yang habis tidak bisa dipesan pembeli, dan stok berkurang otomatis saat ada pesanan.</p><div class="sg">${ms.map((m,i)=>{const n=gs(l,i);return `<div class="box"><div class="row"><div class="plate" style="width:44px;height:44px;font-size:1.4rem;flex:none">${pic(m)}</div><div class="sp"><b>${m[0]}</b><br><small style="color:var(--mu)">${rp(m[2])}</small></div><span class="tag ${n==0?"red":n<=5?"amb":""}">${n==0?"Habis":n<=5?"Menipis":"Tersedia"}</span></div><div class="row" style="margin-top:10px"><div class="q" style="margin:0"><button onclick="sset(${l},${i},-1)" aria-label="Kurangi stok">−</button><span>${n}</span><button onclick="sset(${l},${i},1)" aria-label="Tambah stok">+</button></div><span class="sp"></span><button class="ob" style="width:auto;padding:4px 10px" onclick="sset(${l},${i},${n==0?10:-n})">${n==0?"Isi 10":"Tandai habis"}</button></div></div>`}).join("")}</div></div>`;
+if(S.st=="ringkas"){const ok=mine.filter(x=>x.p.s>=0),sold={};ok.forEach(x=>x.p.it.forEach(y=>sold[y[1]]=(sold[y[1]]||0)+y[2]));const top=Object.entries(sold).sort((a,b)=>b[1]-a[1]).slice(0,3),low=ms.filter((_,i)=>gs(l,i)<=5).length;
+return `<div class="sh">${bar}<div class="sg" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">${[["Pesanan masuk",ok.length],["Pendapatan",rp(ok.reduce((a,x)=>a+pt(x.p),0))],["Pesanan selesai",mine.filter(x=>x.p.s==3).length],["Stok menipis atau habis",low]].map(c=>`<div class="box"><small style="color:var(--mu)">${c[0]}</small><div style="font-size:1.4rem;font-weight:700">${c[1]}</div></div>`).join("")}</div><h3 style="margin-top:18px">Menu terlaris</h3>${top.length?top.map(t=>`<div class="ln"><span>${t[0]}</span><b>${t[1]} terjual</b></div>`).join(""):"<p style=\"color:var(--mu)\">Belum ada penjualan.</p>"}</div>`}
+const fl=[["baru","Baru"],["proses","Diproses"],["siap","Siap Diambil"],["selesai","Riwayat"]],ix={baru:0,proses:1,siap:2},mf=k=>x=>k=="selesai"?x.p.s>=3||x.p.s<0:x.p.s==ix[k],lb=["Pesanan baru","Sedang disiapkan","Siap diambil","Selesai"],list=mine.filter(mf(S.pf)),
+cf=x=>{const o=x.o,p=x.p;return `<div class="box"><div class="row"><b>#${o.id}</b><span class="sp"></span><span class="tag ${p.s<0?"red":p.s==0?"amb":""}">${p.s<0?"Ditolak":lb[p.s]}</span></div><div style="margin:8px 0">${p.it.map(y=>`<div class="ln"><span>${y[2]}× ${y[1]}</span><span>${rp(y[3])}</span></div>`).join("")}</div><div class="ln tot" style="margin:0 0 10px"><span>${{cod:"Bayar di tempat",ew:"E-Wallet",tf:"Transfer"}[o.pay]}</span><span>${rp(pt(p))}</span></div>${p.s==0?`<div class="row"><button class="gb" onclick="adv('${o.id}',${l})">Terima dan siapkan</button><button class="ob" style="width:auto;padding:7px 12px" onclick="rej('${o.id}',${l})">Tolak</button></div>`:p.s==1?`<button class="gb" onclick="adv('${o.id}',${l})">Tandai siap diambil</button>`:p.s==2?`<small style="color:var(--mu)">${p.d?"Driver menandai pesanan belum diambil":"Menunggu driver mengambil pesanan"}</small>`:""}</div>`};
+return `<div class="sh">${bar}<div class="pills">${fl.map(f=>`<button class="${S.pf==f[0]?"on":""}" onclick="S.pf='${f[0]}';render()">${f[1]} (${mine.filter(mf(f[0])).length})</button>`).join("")}</div>${list.length?`<div class="sg">${list.map(cf).join("")}</div>`:`<div class="emp"><p>Belum ada pesanan di tab ini. Pesanan dari pembeli akan muncul di sini.</p></div>`}</div>`};
+function render(){const md=S.mode,v=md=="p"?"seller":md=="d"?"driver":S.v;$("#app").innerHTML=V[v]();$("#cc").textContent=cart.reduce((n,c)=>n+c.q,0);
+const nb=orders.reduce((n,o)=>n+o.parts.filter(p=>p.l==S.sl&&p.s==0).length,0),nd=orders.reduce((n,o)=>n+o.parts.filter(p=>p.s==2).length,0);
+const t=md=="p"?[["pesanan","Pesanan Masuk"+(nb?" ("+nb+")":"")],["stok","Stok Menu"],["ringkas","Ringkasan"]]:md=="d"?[["siap","Siap Diambil"+(nd?" ("+nd+")":"")],["proses","Sedang Disiapkan"],["selesai","Selesai"]]:[["home","Beranda"],["lapak","Lapak"],["status","Pesanan Saya"],["profil","Profil"]],on=md=="p"?S.st:md=="d"?S.dt:S.v=="detail"?"lapak":S.v;
+$("#tabs").innerHTML=t.map(x=>`<button class="${on==x[0]?'on':''}" onclick="${md=="b"?`go('${x[0]}')`:`S.${md=="p"?"st":"dt"}='${x[0]}';render()`}">${x[1]}</button>`).join("");
+$("#md").value=md;document.querySelector('[aria-label="Keranjang"]').style.display=md=="b"?"":"none"}
+render();
+</script></body></html>
